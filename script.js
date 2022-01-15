@@ -89,8 +89,22 @@ function writePassword() {
       pwdArray = pwdArray.concat(specialChar);
     }
 
-    console.log(pwdArray);
-
+    //Calculate password
+    password = '';
     
+    for(let i = 0; i < pwdLength; i++){
+      password += pwdArray[Math.floor(Math.random() * pwdArray.length)];
+    } 
+
+    console.log(password);
+    return password;
+
 
   }
+
+
+}
+
+
+  // Add event listener to generate button
+  generateBtn.addEventListener("click", writePassword);
