@@ -34,25 +34,30 @@ function generatePassword() {
   var charCountValidates = false;
   do {
     var length = window.prompt('How many characters does the password require? (8 - 128)');
+
+    //Convert the length input to a number.
+    var lengthNum = Number(length);
+
     //Exit pwd generator if user clicks 'Cancel'
     if (length === null) {
       return '';
     }
-    else if (Number(length) === NaN) {
-      window.alert('Your input was not a number.');
-      break;
+    else if (isNaN(lengthNum)) {
+       window.alert('Your input was not a number.');
     }
-    else if (Number(length) < 8 || Number(length) > 128) {
-      window.alert('The password must be between 8 and 128 characters.');
+    else if (lengthNum < 8 || lengthNum > 128) {
+       window.alert('The password must be between 8 and 128 characters.');
+      
     }
     else {
-      pwdLength = Number(length);
+      pwdLength = lengthNum;
       charCountValidates = true;
     }
 
   } while (charCountValidates === false)
 
 
+  
   //Input if password includes uppercase characters
   pwdUppercase = window.confirm("Does the password include uppercase characters?");
   //Add uppercase characters to the password array
